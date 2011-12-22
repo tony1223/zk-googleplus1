@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<language-addon>
+	<addon-name>plus1</addon-name> <!-- required -->
+
+ 	<version>
+		<version-class>org.zkoss.fiddle.plus1.Version</version-class>
+		<version-uid>0.8.0</version-uid>
+		<zk-version>5.0.0</zk-version><!-- or later -->
+	</version>
+
+	<language-name>xul/html</language-name>
+	<component>
+		<component-name>plus1</component-name> <!-- required -->
+		<component-class>org.zkoss.fiddle.plus1.Plus1</component-class> <!-- required -->
+		<widget-class>zul.fiddle.plus1.Plus1</widget-class> <!-- required -->
+		<mold>
+			<mold-name>default</mold-name>
+			<mold-uri>mold/plus1.js</mold-uri>
+			<css-uri>css/plus1.css.dsp</css-uri>
+		</mold>
+	</component>
+</language-addon>

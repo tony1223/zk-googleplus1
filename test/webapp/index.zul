@@ -1,0 +1,7 @@
+<zk>
+	<plus1 id="plus1" onLike='alert("like:"+event.like+",href:"+event.href)' />
+	
+	<plus1 id="plus2" size="tall" href="http://www.google.com.tw" onLike='alert("like:"+event.like+",href:"+event.href)' />
+	
+	<button label="invalidated" onClick="plus1.invalidate()" />
+</zk>
