@@ -3,5 +3,8 @@
 	
 	<plus1 id="plus2" size="tall" href="http://www.google.com.tw" onLike='alert("like:"+event.like+",href:"+event.href)' />
 	
+	<plus1 id="plus3" size="tall" href="http://www.zkoss.org" onLike='alert("like:"+event.like+",href:"+event.href)' />
+	<separator />
 	<button label="invalidated" onClick="plus1.invalidate()" />
+	<button label="change" onClick='plus3.setHref("http://www.google.com.tw")' />
 </zk>

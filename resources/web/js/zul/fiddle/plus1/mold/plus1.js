@@ -5,7 +5,7 @@ function (out) {
 
 	out.push('<div ', this.domAttrs_(), '> ');
 
-	out.push('<div class="g-plusone" ');
+	out.push('<div id="',uuid,'-tmp" class="g-plusone" ');
 
 	this._drawDataAttrs(out);
 	

@@ -28,28 +28,38 @@ zul.fiddle.plus1.Plus1 = zk.$extends(zk.Widget, {
 		this.$supers(zul.fiddle.plus1.Plus1,'bind_', arguments);
 		this._initCallback();		
 		if(window.gapi && window.gapi.plusone ){
-			window.gapi.plusone.go(this.$n());
+			window.gapi.plusone.render(this.$n("tmp"),this._getDataMap());
 		}
 	},
 	_drawDataAttr:function(out,attr,val){
 		out.push(' data-',attr,'="',val,'" ');
 	},
-	_drawDataAttrs:function(out){
-		var wgt = this, datas = [
-			"size",
-			"href",
-			"annotation",
-			"width",
-			"align",
-			"expendTo"
-		];
+	_getDataMap:function(){
+		var obj = {};
+		this._iterdatas(
+			function(attr,val){
+				obj[attr] = val;
+			}
+		);
+		return obj;
+	},
+	_iterdatas:function(fn){
+		var wgt = this, datas = zul.fiddle.plus1.Plus1.ATTRS;
 		jq.each(datas,function(id,attr){
 			var val = wgt["_"+attr]; 
 			if (val != null) {
-				wgt._drawDataAttr(out, attr, val);
+				fn(attr, val);
 			}	
 		});
-		wgt._drawDataAttr(out,"callback","gplus1_"+this.uuid);
+		fn("callback","gplus1_"+this.uuid);
+	},
+	_drawDataAttrs:function(out){
+		var wgt = this;
+		this._iterdatas(
+			function(attr,val){
+				wgt._drawDataAttr(out, attr, val);
+			}
+		);
 	},
 	unbind_: function () {
 		delete window["gplus1_"+this.uuid];
@@ -58,6 +68,15 @@ zul.fiddle.plus1.Plus1 = zk.$extends(zk.Widget, {
 	getZclass: function () {
 		return this._zclass != null ? this._zclass: "z-plus1";
 	}
+},{
+	ATTRS:[
+		"size",
+		"href",
+		"annotation",
+		"width",
+		"align",
+		"expendTo"
+	]
 });
 jq(function(){
 	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
